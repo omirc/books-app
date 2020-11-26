@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Contact</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>View Book</h1>
+<a th:href="@{/books}">Back to Book List</a>
+<br/><br/>
+<div th:if="${book}">
+    <table border="0">
+        <tr>
+            <td>ID</td>
+            <td>:</td>
+            <td th:utext="${book.id}">...</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>:</td>
+            <td th:utext="${book.title}">...</td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>:</td>
+            <td th:utext="${book.author}">...</td>
+        </tr>
+    </table>
+    <br/><br/>
+
+    <form th:action="@{/books/{bookId}/delete(bookId=${book.id})}" method="POST">
+        Delete book ? <input type="submit" th:value="Yes" />
+    </form>
+</div>
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+</body>
+</html>
