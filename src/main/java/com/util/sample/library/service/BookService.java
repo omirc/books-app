@@ -2,7 +2,6 @@ package com.util.sample.library.service;
 
 import com.util.sample.library.model.BookModel;
 import com.util.sample.library.model.GenericListModel;
-import com.util.sample.library.model.ReviewModel;
 import com.util.sample.library.model.filter.BookFilterModel;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>View Contact</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
@@ -30,9 +30,9 @@
     <br/><br/>
 
     <form th:action="@{/books/{bookId}/delete(bookId=${book.id})}" method="POST">
-        Delete book ? <input type="submit" th:value="Yes" />
+        Delete book ? <input type="submit" th:value="Yes"/>
     </form>
 </div>
-<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error"/>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Book List</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-        <tr th:each ="book : ${books.getItems()}">
+        <tr th:each="book : ${books.getItems()}">
             <td><a th:href="@{/books/{bookId}(bookId=${book.id})}" th:utext="${book.id}">...</a></td>
             <td th:utext="${book.author}">...</td>
             <td th:utext="${book.title}">...</td>
