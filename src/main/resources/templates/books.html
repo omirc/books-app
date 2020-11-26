@@ -13,6 +13,10 @@
     Inregistrarea a fost adaugata cu succes.
 </p>
 
+<p class="success-msg" th:if="${(param.update != null) and (param.update[0] == 'true')}">
+    Inregistrarea a fost modificata cu succes.
+</p>
+
 <p>
     <a th:href="@{/books/add}">Adauga o carte</a> |
     <a th:href="@{/}">Inapoi la start</a>

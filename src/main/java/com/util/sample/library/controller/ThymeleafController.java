@@ -1,5 +1,6 @@
-package com.util.sample.library.resource;
+package com.util.sample.library.controller;
 
+import com.util.sample.library.exceptions.ApplicationException;
 import com.util.sample.library.model.BookModel;
 import com.util.sample.library.model.GenericListModel;
 import com.util.sample.library.service.DefaultLibraryService;
@@ -16,9 +17,9 @@ import java.util.Optional;
 
 
 @Controller
-public class ThymeleafResource {
+public class ThymeleafController {
 
-    private final Logger logger = LoggerFactory.getLogger(ThymeleafResource.class);
+    private final Logger logger = LoggerFactory.getLogger(ThymeleafController.class);
 
 
     private final int ROW_PER_PAGE = 5;
@@ -63,18 +64,23 @@ public class ThymeleafResource {
                              @Valid @ModelAttribute("book") BookModel bookModel,
                              BindingResult bindingResult) {
 
-
-        if (!bindingResult.hasErrors()) {
-            bookModel.setId(bookId);
-            service.saveBook(bookModel);
-            logger.info("OK. A new book was updated", bookModel);
-            return "redirect:/books";
-        } else {
+        if (bindingResult.hasErrors()) {
             logger.error("Failed to update a book", bindingResult.getAllErrors());
             model.addAttribute("errorMessage", "failed to save the Book");
             model.addAttribute("add", false);
             return "book";
         }
+
+
+        try {
+            bookModel.setId(bookId);
+            service.saveBook(bookModel);
+            logger.info("OK. A new book was updated", bookModel);
+            return "redirect:/books?update=true";
+        } catch (Exception exception) {
+            throw new ApplicationException("cannot update the book", exception);
+        }
+
     }
 
     @PostMapping(value = {"/books/add"})
@@ -94,12 +100,8 @@ public class ThymeleafResource {
             service.saveBook(bookModel);
             logger.info("OK. A new book was added", bookModel);
             return "redirect:/books?create=true";
-        } catch (Exception ex) {
-            logger.error("Failed to update a new book", ex);
-            model.addAttribute("errorMessage", "unexpected exception; check the fields length (at least 2 chars)");
-            model.addAttribute("add", true);
-            model.addAttribute("book", bookModel);
-            return "book";
+        } catch (Exception exception) {
+            throw new ApplicationException("cannot save the book", exception);
         }
     }
 
@@ -120,12 +122,12 @@ public class ThymeleafResource {
     }
 
     @PostMapping(value = {"/books/{bookId}/delete"})
-    public String deleteBook( @PathVariable long bookId) {
+    public String deleteBook(@PathVariable long bookId) {
         try {
             service.delete(bookId);
-
-        } catch (Exception ex) {
-            logger.error("Failed to delete the book", ex);
+            logger.info("OK. The book was deleted", bookId);
+        } catch (Exception exception) {
+            throw new ApplicationException("cannot delete the book", exception);
         }
 
         return "redirect:/books";
@@ -142,7 +144,7 @@ public class ThymeleafResource {
                 model.addAttribute("errorMessage", "Book not found");
             }
         } catch (Exception ex) {
-            model.addAttribute("errorMessage", "Unexpected error occured");
+            model.addAttribute("errorMessage", "Unexpected error occurred");
             logger.error("Unexpected error", ex);
         }
 

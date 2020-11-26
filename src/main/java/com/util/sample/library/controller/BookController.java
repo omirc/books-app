@@ -1,4 +1,4 @@
-package com.util.sample.library.resource;
+package com.util.sample.library.controller;
 
 
 import com.util.sample.library.model.BookModel;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/book")
 @RequiredArgsConstructor
-public class BookResource {
+public class BookController {
 
     @Autowired
     private DefaultLibraryService service;
