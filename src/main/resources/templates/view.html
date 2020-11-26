@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>View Contact</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link th:href="@{/css/mini-default.min.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1>View Book</h1>
 <a th:href="@{/books}">Back to Book List</a>
-<br/><br/>
+
 <div th:if="${book}">
-    <table border="0">
+    <table>
         <tr>
             <td>ID</td>
             <td>:</td>
@@ -34,5 +34,6 @@
     </form>
 </div>
 <div th:if="${errorMessage}" th:utext="${errorMessage}" class="error"/>
+
 </body>
 </html>

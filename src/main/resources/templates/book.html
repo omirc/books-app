@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${add} ? 'Create a Book' : 'Edit a Book'"/>
+    <link th:href="@{/css/mini-default.min.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1 th:text="${add} ? 'Create a Book:' : 'Edit a Book:'"/>
-<a th:href="@{/books}">Back to Book List</a>
-<br/><br/>
+<p><a th:href="@{/books}">Inapoi la lista de carti</a></p>
+
 <form th:action="${add} ? @{/books/add} : @{/books/{bookId}/edit(bookId=${book.id})}"
       th:object="${book}" method="POST">
-    <table border="0">
+    <table>
         <tr th:if="${book.id}">
             <td>ID</td>
             <td>:</td>
@@ -30,8 +31,7 @@
     <input type="submit" th:value="${add} ? 'Create' : 'Update'"/>
 </form>
 
-<br/>
-<!-- Check if errorMessage is not null and not empty -->
 <div th:if="${errorMessage}" th:utext="${errorMessage}" class="error"/>
+
 </body>
 </html>

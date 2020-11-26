@@ -93,7 +93,7 @@ public class ThymeleafResource {
         try {
             service.saveBook(bookModel);
             logger.info("OK. A new book was added", bookModel);
-            return "redirect:/books";
+            return "redirect:/books?create=true";
         } catch (Exception ex) {
             logger.error("Failed to update a new book", ex);
             model.addAttribute("errorMessage", "unexpected exception; check the fields length (at least 2 chars)");
