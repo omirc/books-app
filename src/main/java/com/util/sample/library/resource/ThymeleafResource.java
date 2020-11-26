@@ -21,7 +21,7 @@ public class ThymeleafResource {
     private final Logger logger = LoggerFactory.getLogger(ThymeleafResource.class);
 
 
-    private final int ROW_PER_PAGE = 2;
+    private final int ROW_PER_PAGE = 5;
 
     @Autowired
     private DefaultLibraryService service;

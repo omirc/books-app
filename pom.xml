@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>8</java.version>
+        <spring-boot-shell.version>2.0.1.RELEASE</spring-boot-shell.version>
     </properties>
 
 
@@ -81,6 +82,47 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.shell</groupId>
+            <artifactId>spring-shell-starter</artifactId>
+            <version>${spring-boot-shell.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jline</groupId>
+                    <artifactId>jline</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jline</groupId>
+                    <artifactId>jline-terminal</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jline</groupId>
+                    <artifactId>jline-terminal-jna</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-terminal</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-reader</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-terminal-jna</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>3.6.2</version>
         </dependency>
 
     </dependencies>

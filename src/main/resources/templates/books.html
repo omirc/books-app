@@ -24,7 +24,7 @@
             <th>Delete</th>
         </tr>
         <tr th:each="book : ${books.getItems()}">
-            <td><a th:href="@{/books/{bookId}(bookId=${book.id})}" th:utext="${book.id}">...</a></td>
+            <td th:utext="${book.id}">...</td>
             <td th:utext="${book.author}">...</td>
             <td th:utext="${book.title}">...</td>
             <td><a th:href="@{/books/{bookId}/edit(bookId=${book.id})}">Edit</a></td>
