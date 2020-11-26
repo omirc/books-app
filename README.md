@@ -1,7 +1,5 @@
 # books-app
 
-# books-app
-
 `books-app` este o aplicatie CRUD (create-read-update-delete) pentru managementul unei biblioteci de carti.
 
 ---
