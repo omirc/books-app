@@ -21,7 +21,7 @@ public class ExceptionHelper {
 
     @ExceptionHandler(value = { ApplicationException.class })
     public ResponseEntity<Object> handleBusinessException(ApplicationException ex) {
-        logger.error("Business Exception: ",ex.getMessage());
+        logger.error("Application Exception: ",ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
