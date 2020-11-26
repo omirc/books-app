@@ -1,0 +1,15 @@
+INSERT INTO BOOK(id, title, author) VALUES (1, 'Nuntă în cer', 'Mircea Eliade');
+INSERT INTO BOOK(id, title, author) VALUES (2, 'Un veac de singuratate', 'Gabriel Garcia Marquez');
+INSERT INTO BOOK(id,title, author) VALUES (3, 'Cel mai iubit dintre pământeni', 'Marin Preda');
+INSERT INTO BOOK(id,title, author) VALUES (4, 'Crimă și pedeapsă', 'Feodor Dostoievski');
+INSERT INTO BOOK(id,title, author) VALUES (5, 'Pădurea spânzuraților', 'Liviu Rebreanu');
+INSERT INTO BOOK(id,title, author) VALUES (6, 'Portretul lui Dorian Gray', 'Oscar Wilde');
+INSERT INTO BOOK(id,title, author) VALUES (7, 'Străinul', 'Albert Camus');
+INSERT INTO BOOK(id,title, author) VALUES (8, 'Micul Prinț', 'Antoine de Saint – Exupery');
+INSERT INTO BOOK(id,title, author) VALUES (9, 'Pe aripile vântului', 'Margaret Mitchell');
+INSERT INTO BOOK(id,title, author) VALUES (10, 'Ora 25', 'Constantin Virgil Gheorghiu');
+INSERT INTO BOOK(id,title, author) VALUES (11, 'Bătrânul și marea', 'Ernest Hemingway');
+INSERT INTO BOOK(id,title, author) VALUES (12, 'Povara bunătăţii noastre', 'Ion Druță');
+INSERT INTO BOOK(id,title, author) VALUES (13, 'Bătrânul și marea', 'Ernest Hemingway');
+INSERT INTO BOOK(id,title, author) VALUES (14, 'Ciuleandra', 'Liviu Rebreanu');
+INSERT INTO BOOK(id,title, author) VALUES (15, 'Dragostea durează 3 ani', 'Frédéric Beigbeder');
