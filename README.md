@@ -10,18 +10,18 @@ Consola H2: http://localhost:8080/h2-console
 ### Instructiuni pentru pornirea aplicatiei
 
 a) `mvn clean install`
+
 b) dupa ce contextul `Spring` este complet initializat, uitati-va dupa cursorul `shell>` (stanga jos pe terminal windows) si tastati urmatorul text pentru a incarca in baza de date o colectie de carti prestabilita ("seed"):
 
      shell>insert
 
-    aceasta operatie nu este idempotenta
-c) deschideti browserul cu adresa `http://localhost:8080` pentru a utiliza aplicatia (ThymeleafBookController)
-sau folositi fara UI BookController:
-        `http://localhost:8080/api/book/`
-            
-         cu GET (list, filter), POST, PUT, DELETE
-    
+Aceasta operatie nu este idempotenta.
 
+c) deschideti browserul cu adresa `http://localhost:8080` pentru a utiliza aplicatia (ThymeleafBookController)
+sau folositi fara UI BookController (cu `GET` pentru listare si filtrare, `POST`, `PUT`, `DELETE`):
+
+     http://localhost:8080/api/book/
+            
 ### Tehnologii folosite:
 - Spring BOOT
 - PostgreSQL/H2
@@ -35,7 +35,7 @@ sau folositi fara UI BookController:
 - HTML/CSS (mini-default.min.css): https://github.com/Chalarangelo/mini.css/blob/master/dist/mini-default.min.css
 
 ### Baze de date
-- consista din doua tabele, Book si Review relationate one-to-many (o carte poate avea mai multe review-ri)
+- contine doua tabele, `Book` si `Review` relationate `one-to-many` (o carte poate avea mai multe review-ri)
 
 ### Lucruri de imbunatatit
 - folosire layout pt continut repetitiv (header, footer)
