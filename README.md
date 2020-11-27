@@ -15,7 +15,12 @@ b) dupa ce contextul `Spring` este complet initializat, uitati-va dupa cursorul 
      shell>insert
 
     aceasta operatie nu este idempotenta
-c) deschideti browserul cu adresa `http://localhost:8080` pentru a utiliza aplicatia
+c) deschideti browserul cu adresa `http://localhost:8080` pentru a utiliza aplicatia (ThymeleafBookController)
+sau folositi fara UI BookController:
+        `http://localhost:8080/api/book/`
+            
+         cu GET (list, filter), POST, PUT, DELETE
+    
 
 ### Tehnologii folosite:
 - Spring BOOT
