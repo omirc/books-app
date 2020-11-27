@@ -5,6 +5,9 @@ import com.omirc.library.dto.ReviewDto;
 
 public class ReviewMapper {
 
+    private ReviewMapper() {
+    }
+
     public static Review toEntity(final ReviewDto reviewDto) {
         return Review.builder()
                 .id(reviewDto.getId())

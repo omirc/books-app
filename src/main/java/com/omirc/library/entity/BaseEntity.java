@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @SuperBuilder
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator")

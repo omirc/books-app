@@ -17,12 +17,12 @@ import java.util.Optional;
 
 
 @Controller
-public class ThymeleafController {
+public class ThymeleafBookController {
 
-    private final Logger logger = LoggerFactory.getLogger(ThymeleafController.class);
+    private final Logger logger = LoggerFactory.getLogger(ThymeleafBookController.class);
 
 
-    private final int ROW_PER_PAGE = 5;
+    private static final int ROWS_PER_PAGE = 5;
 
     @Autowired
     private DefaultLibraryService service;
@@ -50,7 +50,7 @@ public class ThymeleafController {
             model.addAttribute("add", false);
             model.addAttribute("book", bookById.get());
         } else {
-            logger.error("Failed to edit the book, could not find any book with this id: ", bookId);
+            logger.error("Failed to edit the book, could not find any book with this id: {}", bookId);
 
             model.addAttribute("errorMessage", "Book not found");
         }
@@ -65,7 +65,7 @@ public class ThymeleafController {
                              BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            logger.error("Failed to update a book", bindingResult.getAllErrors());
+            logger.error("Failed to update a book {}", bindingResult.getAllErrors());
             model.addAttribute("errorMessage", "failed to save the Book");
             model.addAttribute("add", false);
             return "book";
@@ -75,7 +75,7 @@ public class ThymeleafController {
         try {
             bookDto.setId(bookId);
             service.saveBook(bookDto);
-            logger.info("OK. A new book was updated", bookDto);
+            logger.info("OK. A new book was updated {}", bookDto);
             return "redirect:/books?update=true";
         } catch (Exception exception) {
             throw new ApplicationException("cannot update the book", exception);
@@ -89,7 +89,7 @@ public class ThymeleafController {
                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            logger.error("Failed to add a new book", bindingResult.getAllErrors());
+            logger.error("Failed to add a new book {}", bindingResult.getAllErrors());
             model.addAttribute("errorMessage", "failed to save the Book; validation failed");
             model.addAttribute("add", true);
             model.addAttribute("book", bookDto);
@@ -98,7 +98,7 @@ public class ThymeleafController {
 
         try {
             service.saveBook(bookDto);
-            logger.info("OK. A new book was added", bookDto);
+            logger.info("OK. A new book was added {}", bookDto);
             return "redirect:/books?create=true";
         } catch (Exception exception) {
             throw new ApplicationException("cannot save the book", exception);
@@ -108,11 +108,11 @@ public class ThymeleafController {
     @GetMapping(value = "/books")
     public String getBooks(Model model,
                            @RequestParam(value = "page", defaultValue = "1") int pageNumber) {
-        GenericListDto<BookDto> books = service.findAllBooks(pageNumber, ROW_PER_PAGE);
+        GenericListDto<BookDto> books = service.findAllBooks(pageNumber, ROWS_PER_PAGE);
 
         long count = service.countBooks();
         boolean hasPrev = pageNumber > 1;
-        boolean hasNext = (pageNumber * ROW_PER_PAGE) < count;
+        boolean hasNext = (pageNumber * ROWS_PER_PAGE) < count;
         model.addAttribute("books", books);
         model.addAttribute("hasPrev", hasPrev);
         model.addAttribute("prev", pageNumber - 1);
@@ -125,7 +125,7 @@ public class ThymeleafController {
     public String deleteBook(@PathVariable long bookId) {
         try {
             service.delete(bookId);
-            logger.info("OK. The book was deleted", bookId);
+            logger.info("OK. The book was deleted {}", bookId);
         } catch (Exception exception) {
             throw new ApplicationException("cannot delete the book", exception);
         }

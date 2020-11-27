@@ -5,6 +5,9 @@ import com.omirc.library.dto.BookDto;
 
 public class BookMapper {
 
+    private BookMapper() {
+    }
+
     public static Book toEntity(final BookDto bookDto) {
         return Book.builder()
                 .id(bookDto.getId())

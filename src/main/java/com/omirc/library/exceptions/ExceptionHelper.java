@@ -15,13 +15,13 @@ public class ExceptionHelper {
 
     @ExceptionHandler(value = { InvalidInputException.class })
     public ResponseEntity<Object> handleInvalidInputException(InvalidInputException ex) {
-        logger.error("Invalid Input Exception: ",ex.getMessage());
+        logger.error("Invalid Input Exception: {}",ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = { ApplicationException.class })
     public ResponseEntity<Object> handleBusinessException(ApplicationException ex) {
-        logger.error("Application Exception: ",ex.getMessage());
+        logger.error("Application Exception: {}",ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
