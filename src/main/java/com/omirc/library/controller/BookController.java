@@ -4,6 +4,7 @@ import com.omirc.library.dto.BookDto;
 import com.omirc.library.dto.GenericListDto;
 import com.omirc.library.dto.filter.BookFilterDto;
 import com.omirc.library.exceptions.ApplicationException;
+import com.omirc.library.exceptions.InvalidInputException;
 import com.omirc.library.service.DefaultLibraryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,14 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDto> saveBook(@Valid @RequestBody BookDto bookDto) {
+    public ResponseEntity<BookDto> saveBook(@Valid @RequestBody BookDto bookDto,
+                                            BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            logger.error("Cannot add the book {}", bindingResult.getAllErrors());
+            throw new InvalidInputException("Invalid parameters for the Book");
+        }
+
         try {
             return ResponseEntity.ok(service.saveBook(bookDto));
         } catch (Exception exception) {
@@ -80,7 +88,8 @@ public class BookController {
 
         try {
             if (bindingResult.hasErrors()) {
-                return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+                logger.error("Cannot update the book {}", bindingResult.getAllErrors());
+                throw new InvalidInputException("Invalid parameters for the Book");
             }
 
             bookDto.setId(bookId);
