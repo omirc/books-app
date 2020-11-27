@@ -14,6 +14,8 @@ a) `mvn clean install`
 b) dupa ce contextul `Spring` este complet initializat, uitati-va dupa cursorul `shell>` (stanga jos pe terminal windows) si tastati urmatorul text pentru a incarca in baza de date o colectie de carti prestabilita ("seed"):
 
      shell>insert
+     
+![Shell print screen](documents/shell.png?raw=true "Shell print screen")
 
 Aceasta operatie nu este idempotenta.
 
@@ -21,7 +23,9 @@ c) deschideti browserul cu adresa `http://localhost:8080` pentru a utiliza aplic
 sau folositi fara UI BookController (cu `GET` pentru listare si filtrare, `POST`, `PUT`, `DELETE`):
 
      http://localhost:8080/api/book/
-            
+
+![App print screen](documents/app-ps.png?raw=true "App print screen")
+
 ### Tehnologii folosite:
 - Spring BOOT
 - PostgreSQL/H2
